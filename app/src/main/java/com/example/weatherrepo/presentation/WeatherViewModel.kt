@@ -8,9 +8,8 @@ import com.example.weatherrepo.base.BaseViewModel
 import com.example.weatherrepo.data.WeatherInfo
 import com.example.weatherrepo.usecase.WeatherUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,13 +19,27 @@ class WeatherViewModel @Inject constructor(
 ) : BaseViewModel() {
 
 
-
     private val _weatherList = MutableLiveData<List<WeatherInfo>>()
     val weatherList: LiveData<List<WeatherInfo>> get() = _weatherList
 
-    suspend fun getWeatherList()  = viewModelScope.launch {
-        val response = withContext(Dispatchers.IO) {
 
+    init {
+        getWeatherList("seoul")
+    }
+
+    fun getWeatherList(q :String) {
+        viewModelScope.launch {
+            try {
+                val result = weatherUsecase.invoke(q)
+                _weatherList.value = result
+                Log.d("@@@value", result.toString())
+
+            }catch (throwable : Throwable) {
+                Timber.d( throwable.message.toString())
+
+
+
+            }
         }
     }
 

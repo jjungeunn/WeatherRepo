@@ -20,7 +20,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "API_KEY", '\"YEgbTJDi3Wpw4uVsEWd9gc\"'
+        buildConfigField "String", "API_URL", '\"https://api.openweathermap.org/\"'
+        buildConfigField "String", "API_KEY", '\"ef943873d7d00a9ce5f94c5a86d174f9\"'
 
     }
 
@@ -57,7 +58,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.fragment:fragment-ktx:1.5.4"
 
-
+    //Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 
     // http logger
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.5'
@@ -80,7 +82,6 @@ dependencies {
 
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
-
 
 
 }
