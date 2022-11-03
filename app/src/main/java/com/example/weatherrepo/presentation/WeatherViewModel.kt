@@ -32,7 +32,6 @@ class WeatherViewModel @Inject constructor(
             try {
                 val result = weatherUsecase.invoke(q)
                 _weatherList.value = result
-                Log.d("@@@value", result.toString())
 
             }catch (throwable : Throwable) {
                 Timber.d( throwable.message.toString())
@@ -44,10 +43,4 @@ class WeatherViewModel @Inject constructor(
     }
 
 }
-//        try {
-//
-//            val result = weatherUsecase(37.5437, 127.0347)
-//            _weatherList.value = result
-//        } catch (e: Throwable) {
-//            Log.d("getWeatherListException", "$e")
-//        }
+
