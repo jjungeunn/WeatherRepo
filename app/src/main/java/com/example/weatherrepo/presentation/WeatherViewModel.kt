@@ -22,22 +22,16 @@ class WeatherViewModel @Inject constructor(
     private val _weatherList = MutableLiveData<List<WeatherInfo>>()
     val weatherList: LiveData<List<WeatherInfo>> get() = _weatherList
 
-
-    init {
-        getWeatherList("seoul")
-    }
-
     fun getWeatherList(q :String) {
         viewModelScope.launch {
             try {
-                val result = weatherUsecase.invoke(q)
-                _weatherList.value = result
+                val result = weatherUsecase(q)
+                _weatherList.postValue(result)
+                Log.e("### result", result.toString())
+                Log.e("### result 22 ",  _weatherList.value.toString())
 
             }catch (throwable : Throwable) {
-                Timber.d( throwable.message.toString())
-
-
-
+                Timber.e( throwable.message.toString())
             }
         }
     }

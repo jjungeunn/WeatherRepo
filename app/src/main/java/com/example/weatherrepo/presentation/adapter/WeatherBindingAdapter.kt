@@ -8,7 +8,9 @@ object WeatherBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("weather_seoul")
-    fun RecyclerView.setCategories(seoul: List<WeatherInfo>?) {
+    fun RecyclerView.setWeathers(seoul: List<WeatherInfo>?) {
         seoul?.let { (adapter as? SeoulListAdapter)?.submitList(it) }
     }
+
+
 }

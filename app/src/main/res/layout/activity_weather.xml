@@ -6,8 +6,8 @@
     <data>
 
         <variable
-        name="vm"
-        type="com.example.weatherrepo.presentation.WeatherViewModel" />
+            name="vm"
+            type="com.example.weatherrepo.presentation.WeatherViewModel" />
 
     </data>
 
@@ -28,8 +28,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
+            android:id="@+id/v_seoul"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:layout_marginTop="5dp"
             android:background="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,15 +41,49 @@
             android:id="@+id/rv_seoul"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="24dp"
             android:paddingBottom="30dp"
-            app:around_categories="@{vm.weatherList}"
+            app:weather_seoul="@{vm.weatherList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:listitem="@layout/item_seoul" />
+            app:layout_constraintTop_toBottomOf="@+id/v_seoul"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_weathers" />
+
+        <TextView
+            android:id="@+id/tv_london"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/city_london"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_seoul" />
+
+        <View
+            android:id="@+id/v_london"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_london" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_london"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp"
+            app:weather_seoul="@{vm.weatherList}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_london"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_weathers" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

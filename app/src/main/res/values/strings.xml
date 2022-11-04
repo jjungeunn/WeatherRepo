@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WeatherRepo</string>
     <string name="city_seoul">Seoul</string>
+    <string name="city_london">London</string>
 </resources>

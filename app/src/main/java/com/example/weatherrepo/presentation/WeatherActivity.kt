@@ -1,13 +1,13 @@
 package com.example.weatherrepo.presentation
 
 import android.os.Bundle
-import com.example.weatherrepo.R
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
+import com.example.weatherrepo.BR
+import com.example.weatherrepo.R
 import com.example.weatherrepo.base.BaseActivity
 import com.example.weatherrepo.databinding.ActivityWeatherBinding
+import com.example.weatherrepo.presentation.adapter.SeoulListAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class WeatherActivity() :
@@ -15,17 +15,18 @@ class WeatherActivity() :
 
 
     override val viewModel: WeatherViewModel by viewModels()
+    private val adapters : SeoulListAdapter by lazy { SeoulListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weather)
-
-        val viewModel: WeatherViewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
 
+        binding.run {
+            setVariable(BR.vm, this@WeatherActivity.viewModel)
 
-//        binding.run {
-//            setVariable(BR.viewModel, this@WeatherActivity.viewModel)
-//        }
+            rvSeoul.adapter = adapters
+        }
+
+        viewModel.getWeatherList("seoul")
     }
 }

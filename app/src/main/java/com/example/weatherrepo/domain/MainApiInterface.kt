@@ -12,6 +12,5 @@ interface MainApiInterface {
     suspend fun rqWeather(
         @Query("appId") appId: String ,
         @Query("q") q: String,
-
     ): List<WeatherInfo>
 }
