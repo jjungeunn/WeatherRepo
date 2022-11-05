@@ -19,14 +19,11 @@ class WeatherActivity() :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         binding.run {
-            setVariable(BR.vm, this@WeatherActivity.viewModel)
-
+//            setVariable(BR.vm, this@WeatherActivity.viewModel)
             rvSeoul.adapter = adapters
         }
-
         viewModel.getWeatherList("seoul")
+
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.weatherrepo.R
 import com.example.weatherrepo.data.WeatherInfo
 import com.example.weatherrepo.presentation.WeatherViewModel
+import timber.log.Timber
 
 class SeoulListAdapter : ListAdapter<WeatherInfo, WeatherViewHolder>(WeatherDiffUtil()) {
 
@@ -24,10 +25,12 @@ class SeoulListAdapter : ListAdapter<WeatherInfo, WeatherViewHolder>(WeatherDiff
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.bind(getItem(position))
-//        if (!viewModel.weatherList.value.isNullOrEmpty()) {
-//            holder.bind(viewModel.weatherList.value!![position])
-//        }
+
     }
 
-//    override fun getItemCount(): Int = viewModel.weatherList.value?.size ?: 0
+
+
+
+
+
 }

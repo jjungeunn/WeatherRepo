@@ -8,9 +8,10 @@ interface MainApiInterface {
 
     @JvmSuppressWildcards
     @Headers("Content-Type: application/json")
-    @GET("data/2.5/weather?")
+    @GET("data/2.5/forecast?")
     suspend fun rqWeather(
         @Query("appId") appId: String ,
         @Query("q") q: String,
-    ): List<WeatherInfo>
+        @Query("cnt") cnt: Int,
+    ): Response<WeatherInfo>
 }

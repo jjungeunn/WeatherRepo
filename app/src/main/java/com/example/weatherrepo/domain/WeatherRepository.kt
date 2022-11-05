@@ -10,17 +10,12 @@ import javax.inject.Singleton
 
 
 class WeatherRepository @Inject constructor(
-    private val interfece : MainApiInterface
+    private val interfece: MainApiInterface
 ) {
-    suspend fun getWeatherList(q :String) : List<WeatherInfo> {
-        val data = interfece.rqWeather(BuildConfig.API_KEY ,q)
+    suspend fun getWeatherList(q: String): Response<WeatherInfo> {
 
-        Timber.e("data ${data}")
-
-        return data
+      return interfece.rqWeather(BuildConfig.API_KEY, q, 6)
     }
-
-
 
 
 }

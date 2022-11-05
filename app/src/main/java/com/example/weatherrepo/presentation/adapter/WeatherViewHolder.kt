@@ -11,6 +11,11 @@ class WeatherViewHolder(
 
     fun bind(item: WeatherInfo) {
         binding.run {
+            item.list.forEach {
+                it.weather.forEach{
+                    tvDate.setText(it.main)
+                }
+            }
             setVariable(BR.weather, item)
             executePendingBindings()
         }

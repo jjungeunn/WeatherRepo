@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="java.util.List" />
 
         <variable
             name="vm"
@@ -42,12 +43,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingBottom="30dp"
-            app:weather_seoul="@{vm.weatherList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_seoul"
-            tools:itemCount="6"
             tools:listitem="@layout/item_weathers" />
 
         <TextView
