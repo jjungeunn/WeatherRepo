@@ -25,25 +25,30 @@ class WeatherViewModel @Inject constructor(
         Timber.d("Caugh $throwable" )
     }
 
-    var searchData = MutableLiveData<String>("")
+    private val _weatheSeoulrList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
+    val weatheSeoulrList: MutableLiveData<List<WeatherInfo.WeatherDetail>?> = _weatheSeoulrList
 
-    private val _weatherList = MutableLiveData<List<WeatherInfo?>>()
-    val weatherList: LiveData<List<WeatherInfo?>> = _weatherList
-
-
-
-    fun getWeatherList(q: String ) {
+    private val _weatheLondonList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
+    val weatheLondonList: MutableLiveData<List<WeatherInfo.WeatherDetail>?> = _weatheLondonList
+    
+    fun getWeatherList() {
         viewModelScope.launch {
             try {
-                val result = weatherUsecase(q).body()
-                Log.d("ddd", result.toString())
-                _weatherList.postValue(listOf(result))
+                val seoul_result = weatherUsecase("seoul").body()?.list
+                weatheSeoulrList.postValue(seoul_result)
+
+                val london_result = weatherUsecase("london").body()?.list
+                weatheLondonList.postValue(london_result)
+
             } catch (throwable: Throwable) {
 
                 Timber.e(throwable.message.toString())
             }
         }
     }
+
+
+
 
 }
 

@@ -2,13 +2,11 @@ package com.example.weatherrepo.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weatherrepo.R
 import com.example.weatherrepo.data.WeatherInfo
 import com.example.weatherrepo.databinding.ItemWeathersBinding
 
-class SeoulListAdapter : RecyclerView.Adapter<WeatherViewHolder>() {
+class LondonListAdapter : RecyclerView.Adapter<WeatherViewHolder>() {
 
     private val items = mutableListOf<WeatherInfo.WeatherDetail>()
 
@@ -32,10 +30,9 @@ class SeoulListAdapter : RecyclerView.Adapter<WeatherViewHolder>() {
     override fun getItemCount(): Int = items.size
 
 
-    fun updateSeoulItems(newItems: List<WeatherInfo.WeatherDetail>) {
+    fun updateLondonItems(newItems: List<WeatherInfo.WeatherDetail>) {
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
     }
 }
-

@@ -23,6 +23,7 @@ data class WeatherInfo(
         val weather: List<Weather>,
         @SerializedName("dt_txt")
         val dt_txt: String,
+        val type : Int
 
         ) : Parcelable
 
@@ -38,7 +39,14 @@ data class WeatherInfo(
     data class Weather(
         @SerializedName("description")
         val description: String,
+        @SerializedName("id")
+        val id: Int,
         @SerializedName("main")
         val main: String
     ) : Parcelable
+
+    companion object {
+        const val SEOUL_TYPE = 0
+        const val LONDON_TYPE = 0
+    }
 }
