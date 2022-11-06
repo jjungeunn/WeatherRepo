@@ -5,7 +5,7 @@ import com.example.weatherrepo.data.WeatherInfo
 
 class WeatherDiffUtil : DiffUtil.ItemCallback<WeatherInfo>(){
     override fun areItemsTheSame(oldItem: WeatherInfo, newItem: WeatherInfo) =
-        oldItem === newItem
+        oldItem == newItem
 
 
     override fun areContentsTheSame(oldItem: WeatherInfo, newItem: WeatherInfo) =

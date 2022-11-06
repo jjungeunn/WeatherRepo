@@ -1,6 +1,7 @@
 package com.example.weatherrepo.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import com.example.weatherrepo.BR
 import com.example.weatherrepo.R

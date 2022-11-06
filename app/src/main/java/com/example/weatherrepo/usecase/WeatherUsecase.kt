@@ -11,6 +11,7 @@ import javax.inject.Singleton
 class WeatherUsecase @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) {
-    suspend operator fun invoke(q:String) = weatherRepository.getWeatherList(q)
+    suspend operator fun invoke(q:String): Response<WeatherInfo> =
+        weatherRepository.getWeatherList(q)
 
 }

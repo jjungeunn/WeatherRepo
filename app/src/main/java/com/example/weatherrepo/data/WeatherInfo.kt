@@ -1,37 +1,44 @@
 package com.example.weatherrepo.data
 
+import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
 
+@Parcelize
 data class WeatherInfo(
-
+    @SerializedName("cod")
     val cod: String,
-
+    @SerializedName("message")
     val message: Int,
-
+    @SerializedName("list")
     val list: List<WeatherDetail>,
-)
+) : Parcelable {
+    @Parcelize
+    data class WeatherDetail(
+        @SerializedName("dt")
+        val dt: Int,
+        @SerializedName("main")
+        val main: Main,
+        @SerializedName("weather")
+        val weather: List<Weather>,
+        @SerializedName("dt_txt")
+        val dt_txt: String,
 
-data class WeatherDetail(
+        ) : Parcelable
 
-    val dt: Int,
+    @Parcelize
+    data class Main(
+        @SerializedName("temp_max")
+        val temp_max: Double,
+        @SerializedName("temp_min")
+        val temp_min: Double
+    ) : Parcelable
 
-    val main: Main,
-
-    val weather: List<Weather>,
-
-    val dt_text: String,
-
-    )
-
-data class Main(
-
-    val tempMax: Double,
-
-    val tempMin: Double
-)
-
-data class Weather(
-
-    val description: String,
-
-    val main: String
-)
+    @Parcelize
+    data class Weather(
+        @SerializedName("description")
+        val description: String,
+        @SerializedName("main")
+        val main: String
+    ) : Parcelable
+}

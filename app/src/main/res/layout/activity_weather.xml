@@ -43,6 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingBottom="30dp"
+            app:weather_seoul ="@{vm.weatherList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,18 +72,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_london" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_london"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingBottom="30dp"
-            app:weather_seoul="@{vm.weatherList}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v_london"
-            tools:itemCount="6"
-            tools:listitem="@layout/item_weathers" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_london"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingBottom="30dp"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/v_london"-->
+<!--            tools:itemCount="6"-->
+<!--            tools:listitem="@layout/item_weathers" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
