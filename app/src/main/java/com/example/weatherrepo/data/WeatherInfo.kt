@@ -45,8 +45,4 @@ data class WeatherInfo(
         val main: String
     ) : Parcelable
 
-    companion object {
-        const val SEOUL_TYPE = 0
-        const val LONDON_TYPE = 0
-    }
 }

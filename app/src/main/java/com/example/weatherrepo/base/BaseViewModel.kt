@@ -1,6 +1,5 @@
 package com.example.weatherrepo.base
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 

@@ -18,8 +18,6 @@ class WeatherViewHolder(
             setVariable(BR.weather, item)
             executePendingBindings()
 
-
-
             tvMax.setText("MAX :${item.main.temp_max}°C")
             tvMin.setText("MIN : ${item.main.temp_min}°C")
             item.weather.forEach {
@@ -39,6 +37,9 @@ class WeatherViewHolder(
                     else -> {ivIcon.setImageResource(R.drawable.im_sunny)}
                }
             }
+//           if (item.dt_txt.contains("09:00:00") ) {
+//               tvDate.setText(item.dt_txt)
+//           }
 
 
         }

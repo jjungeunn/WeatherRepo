@@ -42,7 +42,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_seoul"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="200dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,15 +75,46 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_london"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:paddingBottom="30dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_london"
-            tools:itemCount="6"
             tools:listitem="@layout/item_weathers" />
 
+        <TextView
+            android:id="@+id/tv_Chicago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/city_chicago"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_london" />
+
+        <View
+            android:id="@+id/v_Chicago"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_Chicago" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_Chicago"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:paddingBottom="30dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_Chicago"
+            tools:listitem="@layout/item_weathers" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
