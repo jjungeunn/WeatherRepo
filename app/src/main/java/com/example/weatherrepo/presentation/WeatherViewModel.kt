@@ -13,6 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -22,35 +24,42 @@ class WeatherViewModel @Inject constructor(
 
 ) : BaseViewModel() {
 
-    private val _weatheSeoulrList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
-    val weatheSeoulrList: MutableLiveData<List<WeatherInfo.WeatherDetail>?> = _weatheSeoulrList
+    private val _weatherSeoulList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
+    val weatherSeoulList: LiveData<List<WeatherInfo.WeatherDetail>?> = _weatherSeoulList
 
-    private val _weatheLondonList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
-    val weatheLondonList: MutableLiveData<List<WeatherInfo.WeatherDetail>?> = _weatheLondonList
+    private val _weatherLondonList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
+    val weatherLondonList: LiveData<List<WeatherInfo.WeatherDetail>?> = _weatherLondonList
 
-    private val _weatheChicagoList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
-    val weatheChicagoList: MutableLiveData<List<WeatherInfo.WeatherDetail>?> = _weatheChicagoList
+    private val _weatherChicagoList = MutableLiveData<List<WeatherInfo.WeatherDetail>?>()
+    val weatherChicagoList: LiveData<List<WeatherInfo.WeatherDetail>?> = _weatherChicagoList
     
     fun getWeatherList() {
         viewModelScope.launch {
             try {
                 val seoul_result = weatherUsecase("seoul").body()?.list
-                _weatheSeoulrList.postValue(seoul_result)
-
                 val london_result = weatherUsecase("london").body()?.list
-                _weatheLondonList.postValue(london_result)
-
                 val chicago_result = weatherUsecase("chicago").body()?.list
-                _weatheChicagoList.postValue(chicago_result)
 
+                _weatherSeoulList.value = filterByDate(seoul_result)
+                _weatherLondonList.value = filterByDate(london_result)
+                _weatherChicagoList.value = filterByDate(chicago_result)
             } catch (throwable: Throwable) {
                 Timber.e(throwable.message.toString())
             }
         }
     }
 
+    private fun filterByDate(weatherDetail: List<WeatherInfo.WeatherDetail>?): List<WeatherInfo.WeatherDetail>? {
+        val map: MutableMap<String, WeatherInfo.WeatherDetail> = mutableMapOf()
 
+        weatherDetail?.forEach {
+            val date = it.dt_txt.split(" ").first()
+            if (map[date] == null) { // 해당 날짜의 가장 첫번째 시간만
+                map[date] = it
+            }
+        }
 
-
+        return map.values.toList()
+    }
 }
 

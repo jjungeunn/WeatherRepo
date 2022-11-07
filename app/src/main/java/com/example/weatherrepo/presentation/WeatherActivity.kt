@@ -2,6 +2,7 @@ package com.example.weatherrepo.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.weatherrepo.BR
 import com.example.weatherrepo.R
 import com.example.weatherrepo.base.BaseActivity
 import com.example.weatherrepo.databinding.ActivityWeatherBinding
@@ -16,38 +17,22 @@ class WeatherActivity() :
 
 
     override val viewModel: WeatherViewModel by viewModels()
-    private val seoul_adapter: SeoulListAdapter by lazy { SeoulListAdapter() }
-    private val london_adapter: LondonListAdapter by lazy { LondonListAdapter() }
-    private val chicago_adapter: ChicagoAdapter by lazy { ChicagoAdapter() }
+
+    private val seoul_adapter: SeoulListAdapter = SeoulListAdapter()
+    private val london_adapter: LondonListAdapter = LondonListAdapter()
+    private val chicago_adapter: ChicagoAdapter = ChicagoAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding.apply {
+            setVariable(BR.vm, this@WeatherActivity.viewModel)
+
             rvSeoul.adapter = seoul_adapter
             rvLondon.adapter = london_adapter
             rvChicago.adapter = chicago_adapter
         }
+
         viewModel.getWeatherList()
-
-        observe()
-    }
-
-    private fun observe() {
-        viewModel.weatheSeoulrList.observe(this, {
-            if (it != null) {
-                seoul_adapter.updateSeoulItems(it)
-            }
-        })
-        viewModel.weatheLondonList.observe(this, {
-            if (it != null) {
-                london_adapter.updateLondonItems(it)
-            }
-        })
-        viewModel.weatheChicagoList.observe(this, {
-            if (it != null) {
-                chicago_adapter.updateChicagoItems(it)
-            }
-        })
-
     }
 }

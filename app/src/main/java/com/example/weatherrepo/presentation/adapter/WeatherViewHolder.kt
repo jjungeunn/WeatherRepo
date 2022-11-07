@@ -16,33 +16,25 @@ class WeatherViewHolder(
     fun bind(item: WeatherInfo.WeatherDetail) {
         binding.run {
             setVariable(BR.weather, item)
-            executePendingBindings()
 
-            tvMax.setText("MAX :${item.main.temp_max}°C")
-            tvMin.setText("MIN : ${item.main.temp_min}°C")
-            item.weather.forEach {
-                tvMain.setText(it.description)
-            }
-            item.weather.forEach {
-                when(it.id) {
-                    in 200..299 ->  {ivIcon.setImageResource(R.drawable.im_storm)}
-                    in 300..599 -> {ivIcon.setImageResource(R.drawable.im_rain)}
-                    in 600..700 ->  {ivIcon.setImageResource(R.drawable.im_snow)}
-                    in 701..771 ->{ivIcon.setImageResource(R.drawable.im_fog)}
-                    in 772..799 ->{ivIcon.setImageResource(R.drawable.im_cloudy)}
-                    in 801..804 ->{ivIcon.setImageResource(R.drawable.im_cloudy)}
-                    in 900..902 -> {ivIcon.setImageResource(R.drawable.im_storm)}
-                    903 -> {ivIcon.setImageResource(R.drawable.im_snow)}
-                    800 -> {ivIcon.setImageResource(R.drawable.im_sunny)}
-                    else -> {ivIcon.setImageResource(R.drawable.im_sunny)}
+            tvDate.text = item.dt_txt
+
+            item.weather.last().let { //weather값이 여러개인 케이스가 없었으므로 가장 마지막 값 사용.
+                val resource = when(it.id) {
+                    in 200..299 -> R.drawable.im_storm
+                    in 300..599 -> R.drawable.im_rain
+                    in 600..700 -> R.drawable.im_snow
+                    in 701..771 -> R.drawable.im_fog
+                    in 772..799 -> R.drawable.im_cloudy
+                    in 801..804 -> R.drawable.im_cloudy
+                    in 900..902 -> R.drawable.im_storm
+                    903 -> R.drawable.im_snow
+                    800 -> R.drawable.im_sunny
+                    else -> R.drawable.im_sunny
                }
+
+                ivIcon.setImageResource(resource)
             }
-//           if (item.dt_txt.contains("09:00:00") ) {
-//               tvDate.setText(item.dt_txt)
-//           }
-
-
         }
-
     }
 }

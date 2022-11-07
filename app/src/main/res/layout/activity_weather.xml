@@ -61,12 +61,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
+            app:weather_seoul="@{vm.weatherSeoulList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_seoul"
             tools:listitem="@layout/item_weathers"
             />
+
 
         <TextView
             android:id="@+id/tv_london"
@@ -95,6 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
+            app:weather_london="@{vm.weatherLondonList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +132,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:nestedScrollingEnabled="false"
+            app:weather_chicago="@{vm.weatherChicagoList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
