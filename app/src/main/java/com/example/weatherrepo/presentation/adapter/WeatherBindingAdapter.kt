@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherrepo.data.WeatherInfo
 
 object WeatherBindingAdapter {
+    /**
+     *recyclerview의 각 값들은 여기서 지
+     */
 
     @JvmStatic
     @BindingAdapter("weather_seoul")
@@ -53,4 +56,3 @@ object WeatherBindingAdapter {
         text = weatherInfo.dt_txt    }
 }
 
-//tvDate.text = item.dt_txt
