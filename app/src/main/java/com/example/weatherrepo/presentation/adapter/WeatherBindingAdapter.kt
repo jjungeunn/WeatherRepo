@@ -46,4 +46,11 @@ object WeatherBindingAdapter {
         text = weatherInfo.main.temp_min.let {
             "MIN : ${it}°C"
         }    }
+
+    @JvmStatic
+    @BindingAdapter("weather_dt")
+    fun TextView.setWeatherDtMain(weatherInfo: WeatherInfo.WeatherDetail) {
+        text = weatherInfo.dt_txt    }
 }
+
+//tvDate.text = item.dt_txt

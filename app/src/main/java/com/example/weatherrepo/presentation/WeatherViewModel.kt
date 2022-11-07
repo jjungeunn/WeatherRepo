@@ -1,6 +1,5 @@
 package com.example.weatherrepo.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -8,14 +7,8 @@ import com.example.weatherrepo.base.BaseViewModel
 import com.example.weatherrepo.data.WeatherInfo
 import com.example.weatherrepo.usecase.WeatherUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
@@ -56,6 +49,7 @@ class WeatherViewModel @Inject constructor(
             val date = it.dt_txt.split(" ").first()
             if (map[date] == null) { // 해당 날짜의 가장 첫번째 시간만
                 map[date] = it
+
             }
         }
 

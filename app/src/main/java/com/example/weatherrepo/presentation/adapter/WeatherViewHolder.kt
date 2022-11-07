@@ -17,8 +17,6 @@ class WeatherViewHolder(
         binding.run {
             setVariable(BR.weather, item)
 
-            tvDate.text = item.dt_txt
-
             item.weather.last().let { //weather값이 여러개인 케이스가 없었으므로 가장 마지막 값 사용.
                 val resource = when(it.id) {
                     in 200..299 -> R.drawable.im_storm

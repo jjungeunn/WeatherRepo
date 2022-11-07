@@ -28,6 +28,7 @@ class WeatherActivity() :
         binding.apply {
             setVariable(BR.vm, this@WeatherActivity.viewModel)
 
+            //도시별 파라미터가 다르므로 각각의 adapter를 사용
             rvSeoul.adapter = seoul_adapter
             rvLondon.adapter = london_adapter
             rvChicago.adapter = chicago_adapter
